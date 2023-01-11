@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".register">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.6"
+        android:scaleType="fitXY"
+        android:src="@drawable/backg"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/logopng"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/frame"
+        tools:ignore="ContentDescription" />
+
+    <EditText
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="25pt"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Во что вы можете играть?"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="bold"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="25pt"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/desc"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Когда вы можете играть?"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="bold"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
+
+    <EditText
+        android:id="@+id/place"
+        android:layout_width="match_parent"
+        android:layout_height="25pt"
+        android:layout_below="@id/time"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Где вы можете играть?"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="bold"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
+
+    <TextView
+        android:id="@+id/hint2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/place"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:alpha="0.6"
+        android:fontFamily="@font/yeah_bold"
+        android:text="Все поля должны быть заполнены!"
+        android:textColor="#FF0000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/buttonChange"
+        android:layout_width="35pt"
+        android:layout_height="35pt"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="50dp"
+        android:alpha="0.7"
+        android:clickable="true"
+        android:onClick="goNext"
+        app:srcCompat="@drawable/lettersend"
+        tools:ignore="ContentDescription,KeyboardInaccessibleWidget,NotSibling,UsingOnClickInXml" />
+
+    <RelativeLayout
+        android:id="@+id/loadingTemp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:background="@color/black"
+        android:scaleType="fitXY"
+        tools:ignore="ContentDescription">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progress"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:alpha="0.6"
+            android:fontFamily="@font/yeah_bold"
+            android:text="Синхронизация..."
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

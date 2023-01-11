@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".userInfo">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.6"
+        android:scaleType="fitXY"
+        android:src="@drawable/backg"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/logopng"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/frame"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="25pt"
+        android:layout_below="@id/logo"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:text="SkyTech GameDev"
+        android:textColorLink="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nickname"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center|top"
+        android:paddingVertical="5dp"
+        android:text="Во что вы можете играть?"
+        android:textColorLink="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/desc"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="10dp"
+        android:text="Во что вы можете играть?"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="bold"
+        android:minHeight="40dp"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
+
+    <ImageView
+        android:layout_width="15pt"
+        android:layout_height="15pt"
+        android:layout_below="@id/desc"
+        android:layout_marginStart="65dp"
+        android:alpha="0.5"
+        android:clickable="true"
+        android:onClick="goBack"
+        app:srcCompat="@drawable/clock"
+        tools:ignore="ContentDescription,KeyboardInaccessibleWidget,NotSibling,UsingOnClickInXml" />
+
+    <TextView
+        android:id="@+id/place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="10dp"
+        android:text="Во что вы можете играть?"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="bold"
+        android:minHeight="40dp"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
+
+    <ImageView
+        android:layout_width="15pt"
+        android:layout_height="15pt"
+        android:layout_below="@id/time"
+        android:layout_marginStart="65dp"
+        android:alpha="0.5"
+        android:clickable="true"
+        android:onClick="goBack"
+        app:srcCompat="@drawable/loc"
+        tools:ignore="ContentDescription,KeyboardInaccessibleWidget,NotSibling,UsingOnClickInXml" />
+
+    <ImageView
+        android:id="@+id/buttonChange"
+        android:layout_width="35pt"
+        android:layout_height="35pt"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="50dp"
+        android:alpha="0.7"
+        android:clickable="true"
+        android:onClick="goBack"
+        app:srcCompat="@drawable/lettersend"
+        tools:ignore="ContentDescription,KeyboardInaccessibleWidget,NotSibling,UsingOnClickInXml" />
+
+    <ImageView
+        android:id="@+id/buttonEditProfile"
+        android:layout_width="25pt"
+        android:layout_height="25pt"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="60dp"
+        android:layout_toStartOf="@id/buttonChange"
+        android:alpha="0.7"
+        android:clickable="true"
+        android:onClick="editProfile"
+        app:srcCompat="@drawable/icon"
+        tools:ignore="ContentDescription,KeyboardInaccessibleWidget,NotSibling,UsingOnClickInXml" />
+
+</RelativeLayout>

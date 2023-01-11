@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BGWcompass</string>
+
+    <string name="facebook_app_id">454279139979319</string>
+    <string name="fb_login_protocol_scheme">fb454279139979319</string>
+    <string name="facebook_client_token">27048b5b08c722cd3615e1254ec0d39f</string>
+
+</resources>

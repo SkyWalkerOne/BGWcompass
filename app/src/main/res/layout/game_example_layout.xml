@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="01dp"
+        android:layout_marginTop="20pt"
+        android:layout_marginBottom="5pt"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:paddingVertical="5dp"
+        android:paddingStart="8pt"
+        android:text="Имя игры"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/creator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10pt"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:paddingStart="8pt"
+        android:paddingEnd="20pt"
+        android:text="Автор: Александр Вусенко"
+        android:textColor="#FFBF00"
+        android:textSize="15sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/creator"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5pt"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:paddingStart="25pt"
+        android:paddingEnd="20pt"
+        android:text="Время: всегда"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5pt"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:paddingStart="25pt"
+        android:paddingEnd="20pt"
+        android:text="Время: всегда"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/place"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5pt"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:paddingStart="8pt"
+        android:paddingEnd="20pt"
+        android:text="Описание игры Описание игры Описание игры Описание игры Описание игры"
+        android:textSize="12sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/members"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_marginBottom="2pt"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:paddingStart="10pt"
+        android:paddingEnd="20pt"
+        android:text="Участники: Олег, Катя, Ибрагим Ибрагимович, полевой дятел, lorem ipsum"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        tools:ignore="HardcodedText,RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/joinGame"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/addicon"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/joinGame"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:alpha="0.5"
+        android:src="@drawable/delete"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

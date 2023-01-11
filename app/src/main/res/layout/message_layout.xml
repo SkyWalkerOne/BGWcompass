@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/messagetext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:background="#6D000000"
+        android:minHeight="50dp"
+        android:paddingHorizontal="8dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="10dp"
+        android:text="Привет, я сегодня такооое увидел, там ядерный кабанчик и рядом не стоял!"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@android:drawable/ic_menu_recent_history"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/frame"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="0.5"
+        android:src="@drawable/delete"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/messagetext"
+        android:layout_alignTop="@id/messagetext"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/yeah_bold"
+        android:text="10:35"
+        android:textColor="#FFE500"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/usernameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/messagetext"
+        android:layout_alignTop="@id/messagetext"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/yeah_bold"
+        android:text="SkyWalkerTherel"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+</RelativeLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:alpha="0.5"
+        android:src="@drawable/logopng"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/hint1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:alpha="0.65"
+        android:fontFamily="@font/yeah_bold"
+        android:text="СТВОРIТЬ АККАУНТ"
+        android:textColor="#A1887F"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/hint2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hint1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:text="Оберiть зручний спосiб авторизацii"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/verify1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hint2"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/button"
+        tools:ignore="ContentDescription" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/verify0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/verify1"
+        android:layout_alignTop="@id/verify1"
+        android:alpha="0"
+        android:clickable="true"
+        android:focusable="true"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/verify1text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/verify1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:text="Продовжити з Facebook"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/verify2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verify1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onGooglePress"
+        android:src="@drawable/button"
+        tools:ignore="ContentDescription,UsingOnClickInXml" />
+
+    <TextView
+        android:id="@+id/verify2text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/verify2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:alpha="1.0"
+        android:fontFamily="@font/yeah_bold"
+        android:text="Продовжити з Google    "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <RelativeLayout
+        android:id="@id/end"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@color/black"
+        android:alpha="0.1"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/psg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/end"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:alpha="2.0"
+        android:fontFamily="@font/yeah_bold"
+        android:text="Продовжуючи, ви погоджуютесь iз загальними положеннями та умовами BGWcompass та полiтикою конфедецiйностi"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+</RelativeLayout>

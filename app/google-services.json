@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "572093130311",
+    "firebase_url": "https://bgwcompass-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "bgwcompass",
+    "storage_bucket": "bgwcompass.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572093130311:android:5feebfea9a132b4be27362",
+        "android_client_info": {
+          "package_name": "com.example.bgwcompass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572093130311-r00iir0em6mmd2f3jiv7ds8okdte1nks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSmD4SR7R_venrCr3Rz0WQNON3ApaWiwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572093130311-7njgq9isa87dv1n0mjnb8vumcdk90on1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
