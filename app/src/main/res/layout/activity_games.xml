@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".games_activity">
+    tools:context=".mainWindows.games_activity">
 
     <TextView
         android:id="@+id/def"
@@ -83,7 +83,7 @@
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/yeah_bold"
-        android:onClick="createGame"
+        android:onClick="creategame"
         android:text="Добавить игру"
         android:textSize="18sp"
         tools:ignore="HardcodedText" />

@@ -1,4 +1,4 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.mainWindows;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,6 +16,13 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bgwcompass.R;
+import com.example.bgwcompass.constants;
+import com.example.bgwcompass.dataClasses.chatMessage;
+import com.example.bgwcompass.dataClasses.savedAvatar;
+import com.example.bgwcompass.dataClasses.userDescription;
+import com.example.bgwcompass.tools.encoder;
+import com.example.bgwcompass.recyclerAdapters.messageAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +39,9 @@ public class HomePage extends AppCompatActivity implements messageAdapter.onUser
     messageAdapter.onUserClick cn;
     encoder e;
     final int maxMessagesValue = 20;
-    static ArrayList<savedAvatar> avs;
+    public static ArrayList<savedAvatar> avs;
+    DatabaseReference ref;
+    ValueEventListener listener;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -52,31 +61,36 @@ public class HomePage extends AppCompatActivity implements messageAdapter.onUser
 
         final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.facebook_sms);
 
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference();
+        ref = FirebaseDatabase.getInstance().getReference();
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listener = this;
                 messages.clear();
                 MainActivity.foundUsers.clear();
                 boolean found = false;
                 int storage = 0;
+
                 for (DataSnapshot dataStorage : dataSnapshot.getChildren()) {
                     storage++;
-                    for (DataSnapshot messageBlock : dataStorage.getChildren()) {
-                        ArrayList<String> data = new ArrayList<>();
-                        for (DataSnapshot messageAttribute : messageBlock.getChildren()) {
-                            data.add(Objects.requireNonNull(messageAttribute.getValue()).toString());
-                        }
-                        if (storage == 2) {
-                            messages.add(new chatMessage(e.decode(data.get(4)), e.decode(data.get(2)), e.decode(data.get(3)), data.get(1), data.get(0)));
-                            if (!found && dataStorage.getChildrenCount() >= maxMessagesValue + 1) {
-                                messageBlock.getRef().removeValue();
-                                found = true;
+                    if (storage == constants.STORAGE_DESCRIPTIONS || storage == constants.STORAGE_MESSAGES) {
+                        for (DataSnapshot messageBlock : dataStorage.getChildren()) {
+                            ArrayList<String> data = new ArrayList<>();
+
+                            for (DataSnapshot messageAttribute : messageBlock.getChildren()) {
+                                data.add(Objects.requireNonNull(messageAttribute.getValue()).toString());
                             }
-                        } else if (storage == 1) {
-                            MainActivity.foundUsers.add(new userDescription(e.decode(data.get(3)), e.decode(data.get(2)), e.decode(data.get(1)), data.get(0)));
+
+                            if (storage == constants.STORAGE_MESSAGES) {
+                                messages.add(new chatMessage(e.decode(data.get(4)), e.decode(data.get(2)), e.decode(data.get(3)), data.get(1), data.get(0)));
+                                if (!found && dataStorage.getChildrenCount() >= maxMessagesValue + 1) {
+                                    messageBlock.getRef().removeValue();
+                                    found = true;
+                                }
+                            } else {
+                                MainActivity.foundUsers.add(new userDescription(e.decode(data.get(3)), e.decode(data.get(2)), e.decode(data.get(1)), data.get(0)));
+                            }
                         }
                     }
                 }
@@ -136,16 +150,19 @@ public class HomePage extends AppCompatActivity implements messageAdapter.onUser
                     int storage = 0;
                     for (DataSnapshot dataStorage : dataSnapshot.getChildren()) {
                         storage++;
-                        for (DataSnapshot messageBlock : dataStorage.getChildren()) {
-                            ArrayList<String> data = new ArrayList<>();
-                            for (DataSnapshot messageAttribute : messageBlock.getChildren()) {
-                                data.add(Objects.requireNonNull(messageAttribute.getValue()).toString());
-                            }
-                            if (storage == 2 &&
-                                    data.get(1).equals(messages.get(index).getId()) &&
-                                    e.decode(data.get(2)).equals(messages.get(index).getMessage()) &&
-                                    e.decode(data.get(3)).equals(messages.get(index).getTime())) {
-                                messageBlock.getRef().removeValue();
+                        if (storage == constants.STORAGE_MESSAGES) {
+                            for (DataSnapshot messageBlock : dataStorage.getChildren()) {
+                                ArrayList<String> data = new ArrayList<>();
+
+                                for (DataSnapshot messageAttribute : messageBlock.getChildren()) {
+                                    data.add(Objects.requireNonNull(messageAttribute.getValue()).toString());
+                                }
+
+                                if (data.get(1).equals(messages.get(index).getId()) &&
+                                        e.decode(data.get(2)).equals(messages.get(index).getMessage()) &&
+                                        e.decode(data.get(3)).equals(messages.get(index).getTime())) {
+                                    messageBlock.getRef().removeValue();
+                                }
                             }
                         }
                     }
@@ -167,6 +184,7 @@ public class HomePage extends AppCompatActivity implements messageAdapter.onUser
             if (description != null) {
                 userInfo.cm = messages.get(index);
                 userInfo.ud = description;
+                ref.removeEventListener(listener);
                 finish();
                 startActivity(new Intent(HomePage.this, userInfo.class));
             }
@@ -174,6 +192,7 @@ public class HomePage extends AppCompatActivity implements messageAdapter.onUser
     }
 
     public void goToGame(View view) {
+        ref.removeEventListener(listener);
         finish();
         startActivity(new Intent(HomePage.this, games_activity.class));
     }

@@ -1,4 +1,4 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.mainWindows;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bgwcompass.R;
+import com.example.bgwcompass.constants;
+import com.example.bgwcompass.dataClasses.chatMessage;
+import com.example.bgwcompass.dataClasses.userDescription;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,8 +33,8 @@ import java.util.Objects;
 
 public class userInfo extends AppCompatActivity {
 
-    static userDescription ud;
-    static chatMessage cm;
+    public static userDescription ud;
+    public static chatMessage cm;
     ImageView editButton;
 
     TextView desc, time, place, nick;
@@ -92,20 +96,25 @@ public class userInfo extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int storage = 0;
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                for (DataSnapshot storages : dataSnapshot.getChildren()) {
                     storage++;
-                    for (DataSnapshot child2 : child.getChildren()) {
-                        ArrayList<String> data = new ArrayList<>();
-                        for (DataSnapshot child3 : child2.getChildren()) {
-                            data.add(Objects.requireNonNull(child3.getValue()).toString());
-                        }
+                    if (storage == constants.STORAGE_DESCRIPTIONS) {
+                        for (DataSnapshot description : storages.getChildren()) {
+                            ArrayList<String> data = new ArrayList<>();
 
-                        if (storage == 1 && data.get(0).equals(ud.getId())) {
-                            child2.getRef().removeValue();
-                            ref.removeEventListener(this);
+                            for (DataSnapshot descAttrs : description.getChildren()) {
+                                data.add(Objects.requireNonNull(descAttrs.getValue()).toString());
+                            }
+
+                            if (data.get(0).equals(ud.getId())) {
+                                description.getRef().removeValue();
+                                ref.removeEventListener(this);
+                            }
                         }
                     }
                 }
+
+                ref.removeEventListener(this);
 
                 finish();
                 startActivity(new Intent(userInfo.this, register.class));

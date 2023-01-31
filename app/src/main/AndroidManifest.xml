@@ -20,16 +20,16 @@
         android:theme="@style/Theme.BGWcompass"
         tools:targetApi="32">
         <activity
-            android:name=".createGame"
+            android:name=".additionalWindows.createGame"
             android:exported="false" />
         <activity
-            android:name=".games_activity"
+            android:name=".mainWindows.games_activity"
             android:exported="false" />
         <activity
-            android:name=".userInfo"
+            android:name=".mainWindows.userInfo"
             android:exported="false" />
         <activity
-            android:name=".register"
+            android:name=".mainWindows.register"
             android:exported="false" />
 
         <meta-data
@@ -38,13 +38,17 @@
         <meta-data
             android:name="com.facebook.sdk.ClientToken"
             android:value="@string/facebook_client_token" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCI18Kd4omMsTSmTar65Y5bkrMUz1gCtPk" />
+
 
         <activity
-            android:name=".HomePage"
+            android:name=".mainWindows.HomePage"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".mainWindows.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.dataClasses;
 
 public class userDescription {
     private String id;

@@ -1,4 +1,4 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.tools;
 
 public class encoder {
     private final String list = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefjhijklmnopqrstuvwxyz1234567890";

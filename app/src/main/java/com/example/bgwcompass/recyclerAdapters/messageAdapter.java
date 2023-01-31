@@ -1,4 +1,4 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.recyclerAdapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,6 +16,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bgwcompass.mainWindows.HomePage;
+import com.example.bgwcompass.mainWindows.MainActivity;
+import com.example.bgwcompass.R;
+import com.example.bgwcompass.dataClasses.chatMessage;
+import com.example.bgwcompass.dataClasses.savedAvatar;
+
 import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +31,7 @@ public class messageAdapter extends RecyclerView.Adapter<messageAdapter.ViewHold
     private final List<chatMessage> messages;
     private final onUserClick cn;
 
-    messageAdapter(Context context, List<chatMessage> states, onUserClick cn) {
+    public messageAdapter(Context context, List<chatMessage> states, onUserClick cn) {
         this.messages = states;
         this.inflater = LayoutInflater.from(context);
         this.cn = cn;

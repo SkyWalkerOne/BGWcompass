@@ -1,4 +1,4 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.mainWindows;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,6 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.example.bgwcompass.R;
+import com.example.bgwcompass.dataClasses.memberAppearance;
+import com.example.bgwcompass.dataClasses.userDescription;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -34,6 +37,8 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -48,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
     LoginButton onFaceBookEntry;
 
     private FirebaseAuth mAuth;
-    static FirebaseUser user;
+    public static FirebaseUser user;
 
-    static ArrayList<userDescription> foundUsers;
+    public static ArrayList<userDescription> foundUsers;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -122,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
                                 .addOnCompleteListener(this, task -> {
                                     if(task.isSuccessful()) {
                                         goNext();
+                                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                                        mDatabase.child("profiles").push().setValue(new memberAppearance(user.getUid(), Objects.requireNonNull(user.getPhotoUrl()).toString(), user.getDisplayName()));
                                     } else
                                         Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 });
@@ -146,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         goNext();
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                        mDatabase.child("profiles").push().setValue(new memberAppearance(user.getUid(), Objects.requireNonNull(user.getPhotoUrl()).toString(), user.getDisplayName()));
                         Toast.makeText(MainActivity.this, "Authentication Succeeded.", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
@@ -161,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goNext() {
         user = mAuth.getCurrentUser();
+
         finish();
         startActivity(new Intent(MainActivity.this, register.class));
     }

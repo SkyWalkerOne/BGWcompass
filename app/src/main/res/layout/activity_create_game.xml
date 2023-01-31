@@ -5,13 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".createGame">
+    tools:context=".additionalWindows.createGame">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:alpha="0.65"
         android:fontFamily="@font/yeah_bold"
         android:text="ДОБАВИТЬ ИГРУ"
@@ -20,65 +20,88 @@
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
-    <EditText
-        android:id="@+id/nameGame"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="25pt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="30dp"
-        android:hint="Имя игры"
-        android:textColorLink="#FFFFFF"
-        android:textStyle="bold"
-        tools:ignore="Autofill,HardcodedText,TextFields" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/mapView"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="120dp">
+        <HorizontalScrollView
+            android:id="@+id/hscroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:fillViewport="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:isScrollContainer="true"
+                tools:ignore="ScrollViewSize">
 
-    <EditText
-        android:id="@+id/timeGame"
-        android:layout_width="match_parent"
-        android:layout_height="25pt"
-        android:layout_below="@id/nameGame"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:hint="Дата и время игры"
-        android:textColorLink="#FFFFFF"
-        android:textStyle="bold"
-        tools:ignore="Autofill,HardcodedText,TextFields" />
+                <CalendarView
+                    android:id="@+id/timeGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/placeGame"
+                    android:minDate="01/01/2023" />
 
-    <EditText
-        android:id="@+id/descGame"
-        android:layout_width="match_parent"
-        android:layout_height="25pt"
-        android:layout_below="@id/timeGame"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:hint="Описание игры"
-        android:textColorLink="#FFFFFF"
-        android:textStyle="bold"
-        tools:ignore="Autofill,HardcodedText,TextFields" />
+                <EditText
+                    android:id="@+id/nameGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="25pt"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginEnd="30dp"
+                    android:hint="Имя игры"
+                    android:textColorLink="#FFFFFF"
+                    android:textStyle="bold"
+                    tools:ignore="Autofill,HardcodedText,TextFields" />
 
-    <EditText
-        android:id="@+id/placeGame"
+                <EditText
+                    android:id="@+id/descGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="25pt"
+                    android:layout_below="@id/nameGame"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:hint="Описание игры"
+                    android:textColorLink="#FFFFFF"
+                    android:textStyle="bold"
+                    tools:ignore="Autofill,HardcodedText,TextFields" />
+
+                <EditText
+                    android:id="@+id/placeGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="25pt"
+                    android:layout_below="@id/descGame"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Место игры"
+                    android:textColorLink="#FFFFFF"
+                    android:textStyle="bold"
+                    tools:ignore="Autofill,HardcodedText,LabelFor,TextFields" />
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="25pt"
-        android:layout_below="@id/descGame"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Место игры"
-        android:textColorLink="#FFFFFF"
-        android:textStyle="bold"
-        tools:ignore="Autofill,HardcodedText,LabelFor,TextFields" />
+        android:layout_height="180dp"
+        android:layout_marginTop="70dp"
+        android:clickable="true"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/hint2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/placeGame"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/mapView"
+        android:layout_marginBottom="20dp"
         android:alpha="0.0"
         android:fontFamily="@font/yeah_bold"
         android:text="Все поля должны быть заполнены!"
@@ -94,10 +117,10 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:alpha="0.7"
         android:clickable="true"
-        android:onClick="createGame"
+        android:onClick="creategame"
         app:srcCompat="@drawable/lettersend"
         tools:ignore="ContentDescription,KeyboardInaccessibleWidget,NotSibling,UsingOnClickInXml" />
 
@@ -107,12 +130,14 @@
         android:layout_height="25pt"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="30dp"
         android:layout_toStartOf="@id/buttonChange"
         android:alpha="0.7"
         android:clickable="true"
         android:onClick="goBack"
         app:srcCompat="@drawable/delete"
         tools:ignore="ContentDescription,KeyboardInaccessibleWidget,NotSibling,UsingOnClickInXml" />
+
+
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.dataClasses;
 
 public class chatMessage {
     private final String userName, message, time, id, avatarURL;

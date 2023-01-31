@@ -1,7 +1,7 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.mainWindows;
 
-import static com.example.bgwcompass.MainActivity.foundUsers;
-import static com.example.bgwcompass.MainActivity.user;
+import static com.example.bgwcompass.mainWindows.MainActivity.foundUsers;
+import static com.example.bgwcompass.mainWindows.MainActivity.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +9,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,6 +23,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bgwcompass.R;
+import com.example.bgwcompass.constants;
+import com.example.bgwcompass.dataClasses.userDescription;
+import com.example.bgwcompass.tools.encoder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -78,13 +81,16 @@ public class register extends AppCompatActivity {
                 int storage = 0;
                 for (DataSnapshot dataStorage : dataSnapshot.getChildren()) {
                     storage++;
-                    for (DataSnapshot userDescription : dataStorage.getChildren()) {
-                        ArrayList<String> data = new ArrayList<>();
-                        for (DataSnapshot descriptionAttributes : userDescription.getChildren()) {
-                            data.add(Objects.requireNonNull(descriptionAttributes.getValue()).toString());
-                        }
-                        if (storage == 1) {
-                            userDescription description = new userDescription(e.decode(data.get(3)), e.decode(data.get(2)), e.decode(data.get(1)), data.get(0));
+
+                    if (storage == constants.STORAGE_DESCRIPTIONS) {
+                        for (DataSnapshot userDescription : dataStorage.getChildren()) {
+                            ArrayList<String> data = new ArrayList<>();
+
+                            for (DataSnapshot descriptionAttributes : userDescription.getChildren()) {
+                                data.add(Objects.requireNonNull(descriptionAttributes.getValue()).toString());
+                            }
+
+                            com.example.bgwcompass.dataClasses.userDescription description = new userDescription(e.decode(data.get(3)), e.decode(data.get(2)), e.decode(data.get(1)), data.get(0));
                             foundUsers.add(description);
                             if (!wasFound && description.getId().equals(user.getUid())) {
                                 wasFound = true;
@@ -94,29 +100,30 @@ public class register extends AppCompatActivity {
                             }
                         }
                     }
-                    if (!wasFound) {
-                        RelativeLayout rl = findViewById(R.id.loadingTemp);
-                        rl.setVisibility(View.GONE);
-
-                        desc.setFocusableInTouchMode(true);
-                        time.setFocusableInTouchMode(true);
-                        place.setFocusableInTouchMode(true);
-                    }
                 }
+                if (!wasFound) {
+                    RelativeLayout rl = findViewById(R.id.loadingTemp);
+                    rl.setVisibility(View.GONE);
+
+                    desc.setFocusableInTouchMode(true);
+                    time.setFocusableInTouchMode(true);
+                    place.setFocusableInTouchMode(true);
+                }
+                ref.removeEventListener(this);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast toast = Toast.makeText(getApplicationContext(),
-                        "Не удалось подключиться к чату, попробуйте проверить интернет-соединение!", Toast.LENGTH_LONG);
+                        "Не удалось подключиться к серверу, попробуйте проверить интернет-соединение!", Toast.LENGTH_LONG);
                 toast.show();
             }
         });
     }
 
     public void goNext(View view) {
-        if (desc.getText().toString().trim().isEmpty() &&
-                time.getText().toString().trim().isEmpty() &&
+        if (desc.getText().toString().trim().isEmpty() ||
+                time.getText().toString().trim().isEmpty() ||
                 place.getText().toString().trim().isEmpty()) {
             hint.setAlpha(0.6f);
             return;

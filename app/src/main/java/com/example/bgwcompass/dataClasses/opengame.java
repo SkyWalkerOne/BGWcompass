@@ -1,4 +1,4 @@
-package com.example.bgwcompass;
+package com.example.bgwcompass.dataClasses;
 
 import java.util.ArrayList;
 
